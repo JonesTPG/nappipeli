@@ -2,12 +2,14 @@ const express = require('express');
 var http = require('http');
 const path = require('path');
 var socketIO = require('socket.io');
+var cors = require('cors');
 
 
 const app = express();
 var server = http.Server(app);
 var io = socketIO(server);
 
+app.use(cors());
 // Serve static files from the React app
 app.use(express.static(path.join(__dirname, 'client/build')));
 
