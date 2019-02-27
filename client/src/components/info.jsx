@@ -1,16 +1,15 @@
 import React, { Component } from 'react';
 
-
-class Button extends Component {
+class Info extends Component {
     constructor(props) {
         super(props);
         this.state = {  }
     }
     render() { 
-        return (  
-            <p> THE BUTTON. </p>
-        );
+        return ( 
+            <p>Voitit pienen palkinnon!</p>
+         );
     }
 }
  
-export default Button;
+export default Info;

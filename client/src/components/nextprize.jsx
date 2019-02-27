@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
 
-class PreviousWinners extends Component {
+class NextPrize extends Component {
     constructor(props) {
         super(props);
         this.state = {  }
     }
     render() { 
         return ( 
-            <h1>Aikaisemmat voittajat: </h1>
+            <>
+                <p>Seuraavaan palkintoon matkaa: </p>
+            </>
          );
     }
 }
  
-export default PreviousWinners;
+export default NextPrize;

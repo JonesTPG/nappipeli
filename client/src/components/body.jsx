@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import PreviousWinners from './previouswinners';
-import Button from './button';
+import Main from './main';
 import Players from './players';
+
+import '../css/body.css'
 
 class Body extends Component {
     constructor(props) {
@@ -11,9 +13,15 @@ class Body extends Component {
     render() { 
         return ( 
         <div className="body">
-            <PreviousWinners></PreviousWinners>
-            <Button></Button>    
-            <Players></Players>
+            <div className="column">
+                <PreviousWinners></PreviousWinners>
+            </div>
+            <div className="column">
+                <Main></Main>
+            </div>
+            <div className="column">
+                <Players socket={this.props.socket}></Players>
+            </div>   
         </div>
          );
     }

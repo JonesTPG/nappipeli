@@ -3,19 +3,18 @@ import './App.css';
 import Header from './components/header';
 import Body from './components/body';
 import Footer from './components/footer';
+import Welcome from './components/welcome';
 
-import { subscribeToTimer } from './api';
+
 
 class App extends Component {
   constructor(props) {
     super(props);
-
-    subscribeToTimer((err, timestamp) => this.setState({ 
-      timestamp 
-    }));
+    
     this.state = { 
-        timestamp: 'no timestamp yet'
+        
     }
+
 }
 
   
@@ -28,11 +27,10 @@ class App extends Component {
 
     return (
       <>
-      <p>This is the timer value: {this.state.timestamp}</p>
+        <Welcome socket={this.props.socket}></Welcome>
         <Header></Header>
-        <Body></Body>
+        <Body socket={this.props.socket}></Body>
         <Footer></Footer>
-
       </>
     );
   }
