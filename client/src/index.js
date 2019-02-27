@@ -6,8 +6,8 @@ import * as serviceWorker from './serviceWorker';
 import io from 'socket.io-client'
 
 //initialize a websocket connection to the server.
-//var socket = io.connect('http://localhost:5000'); //local
-var socket = io.connect('https://thawing-wildwood-25973.herokuapp.com:5000'); //heroku
+var socket = io.connect('http://localhost:5000'); //local
+//var socket = io.connect('https://thawing-wildwood-25973.herokuapp.com:5000'); //heroku
 
 // socket.on('playerUpdate', function(data) {
 //   console.log(data);

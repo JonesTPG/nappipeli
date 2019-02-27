@@ -50,7 +50,7 @@ io.on('connection', function(socket) {
         //update counter.
         counter++;
         //big prize.
-        if (counter % 500 == 0) {
+        if (counter % 50 == 0) {
             notifyProgressToNextPrize(100);
             let data = {
                 id: socket.id,
@@ -62,7 +62,7 @@ io.on('connection', function(socket) {
             notifyPrizeWon(data);
         }
         //medium prize.
-        else if (counter % 200 == 0) {
+        else if (counter % 20 == 0) {
             notifyProgressToNextPrize(100);
             let data = {
                 id: socket.id,
@@ -74,7 +74,7 @@ io.on('connection', function(socket) {
             notifyPrizeWon(data);
         }
         //small prize.
-        else if (counter % 100 == 0) {
+        else if (counter % 10 == 0) {
             notifyProgressToNextPrize(100);
             let data = {
                 id: socket.id,
@@ -92,6 +92,13 @@ io.on('connection', function(socket) {
             lastdigits = parseInt(lastdigits);
             var nextPrize = 100-lastdigits;
             notifyProgressToNextPrize(nextPrize);
+            let data = {
+                id: socket.id,
+                username: getUsername(socket.id),
+                prize: '',
+                date: new Date()
+            }
+            notifyPrizeWon(data); //notify client that a prize wasn't won.
         }
         notifyWinnersChanged(previousWinners);
     });
