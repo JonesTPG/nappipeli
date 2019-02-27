@@ -12,25 +12,31 @@ class App extends Component {
     super(props);
     
     this.state = { 
-        
+        username: ''
     }
 
 }
 
-  
   componentDidMount() {
    
   }
 
+  handleUsername = (username) => {
+      this.setState({
+          username: username
+      })
+  }
 
   render() {
 
     return (
       <>
-        <Welcome socket={this.props.socket}></Welcome>
-        <Header></Header>
+       {/*passing a function as a prop so we can catch the username the user chooses at the welcome screen.*/}
+        <Welcome socket={this.props.socket}
+                 handleUsername={this.handleUsername}></Welcome>
+        <Header username={this.state.username}></Header>
         <Body socket={this.props.socket}></Body>
-        <Footer></Footer>
+        <Footer socket={this.props.socket}></Footer>
       </>
     );
   }

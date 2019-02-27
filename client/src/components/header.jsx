@@ -11,7 +11,7 @@ class Header extends Component {
             <div className="header">
                 <p>Vincit ennakkotehtävä: nappipeliv2</p>
 
-                <p>Kirjautuneena käyttäjällä</p>
+                <p>Pelaat nimimerkillä {this.props.username}</p>
             </div>
             
          );

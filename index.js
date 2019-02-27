@@ -4,25 +4,23 @@ const path = require('path');
 var socketIO = require('socket.io');
 var cors = require('cors');
 
-
 const app = express();
 var server = http.Server(app);
 var io = socketIO(server);
 
 app.use(cors());
-
 // Serve static files from the React app
 app.use(express.static(path.join(__dirname, 'client/build')));
 
 //THE VARIABLES FOR THE GAME
 let players = [];
 let counter = 0;
+let previousWinners = [];
 
 //api request for getting the player list through normal HTTP get-request.
 app.get('/api/players', (req, res) => {
     res.json(players);
 });
-
 // The "catchall" handler: for any request that doesn't
 // match one above, send back React's index.html file.
 app.get('*', (req, res) => {
@@ -41,53 +39,61 @@ io.on('connection', function(socket) {
     socket.on('new player', function(data) {
         
         players.push({
-            "username": data,
-            "id": socket.id
+            username : data,
+            id: socket.id
         });
         notifyPlayersChanged(players);
         
     });
 
     socket.on('push', function(data) {
-        console.log("button pushed by " + socket.id);
+        //update counter.
         counter++;
         //big prize.
         if (counter % 500 == 0) {
-            console.log("big prize won by " + socket.id);
             notifyProgressToNextPrize(100);
-            notifyPrizeWon({
+            let data = {
                 id: socket.id,
-                prize: "big"
-            })
+                username: getUsername(socket.id),
+                prize: "big",
+                date: new Date()
+            };
+            previousWinners.push(data);
+            notifyPrizeWon(data);
         }
         //medium prize.
         else if (counter % 200 == 0) {
-            console.log("medium prize won by " + socket.id);
             notifyProgressToNextPrize(100);
-            notifyPrizeWon({
+            let data = {
                 id: socket.id,
-                prize: "medium"
-            })
+                username: getUsername(socket.id),
+                prize: "medium",
+                date: new Date()
+            };
+            previousWinners.push(data);
+            notifyPrizeWon(data);
         }
         //small prize.
-        else if (counter % 100 == 0) {
-            console.log("small prize won by " + socket.id);
+        else if (counter % 5 == 0) {
             notifyProgressToNextPrize(100);
-            notifyPrizeWon({
+            let data = {
                 id: socket.id,
-                prize: "small"
-            })
+                username: getUsername(socket.id),
+                prize: "small",
+                date: new Date()
+            };
+            previousWinners.push(data);
+            notifyPrizeWon(data);
         }
         //no prize.
         else {
-            console.log("NO prize won by " + socket.id);
             var string = counter.toString();
             var lastdigits = string.slice(-2);
             lastdigits = parseInt(lastdigits);
             var nextPrize = 100-lastdigits;
-            console.log("next prize is " + nextPrize + "clicks away.");
             notifyProgressToNextPrize(nextPrize);
         }
+        notifyWinnersChanged(previousWinners);
     });
 
     socket.on('disconnect', function() {
@@ -100,10 +106,6 @@ io.on('connection', function(socket) {
     });
 
 });
-
-setInterval(function() {
-    io.sockets.emit('message', 'hi!');
-  }, 1000);
 
 //notify clients that the player pool has changed.
 function notifyPlayersChanged(newPlayers) {
@@ -118,6 +120,10 @@ function notifyProgressToNextPrize(count) {
 //notify client that a prize was won.
 function notifyPrizeWon(data) {
     io.to(data.id).emit('prizeWon', data);
+}
+
+function notifyWinnersChanged(previousWinners) {
+    io.sockets.emit('previousWinners', previousWinners);
 }
 
 //utility function to get the username with a socket id.

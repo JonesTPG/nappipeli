@@ -14,7 +14,7 @@ class Body extends Component {
         return ( 
         <div className="body">
             <div className="column">
-                <PreviousWinners></PreviousWinners>
+                <PreviousWinners socket={this.props.socket}></PreviousWinners>
             </div>
             <div className="column">
                 <Main socket={this.props.socket}></Main>

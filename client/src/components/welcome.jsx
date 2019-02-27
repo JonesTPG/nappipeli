@@ -21,7 +21,7 @@ class Welcome extends Component {
     }
     //when user clicks submit, send the username to server
     handleSubmit(event) {
-        if (this.state.value == '') {
+        if (this.state.value === '') {
                 this.setState({
                     infoText: 'Sinun täytyy valita nimimerkki ennen pelaamista.'
                 })
@@ -30,7 +30,7 @@ class Welcome extends Component {
         else {
             var modal = document.getElementById('myModal');
             modal.style.display = "none";
-
+            this.props.handleUsername(this.state.value);
             //this socket object is from the original index.js connection.
             //this way we only use one connection per player.
             let socket = this.props.socket;
@@ -51,7 +51,7 @@ class Welcome extends Component {
                         Nimimerkki:<br></br> 
                         <input type="text" value={this.state.value} onChange={this.handleChange} />
                         </label>
-                        <input type="submit" value="Submit" />
+                        <input type="submit" value="Lähetä" />
                     </form>
                     <p>{this.state.infoText}</p>
                     </div>
