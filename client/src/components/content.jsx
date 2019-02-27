@@ -3,16 +3,16 @@ import PreviousWinners from './previouswinners';
 import Main from './main';
 import Players from './players';
 
-import '../css/body.css'
+import '../css/content.css'
 
-class Body extends Component {
+class Content extends Component {
     constructor(props) {
         super(props);
         this.state = {  }
     }
     render() { 
         return ( 
-        <div className="body">
+        <div className="content">
             <div className="column">
                 <PreviousWinners socket={this.props.socket}></PreviousWinners>
             </div>
@@ -27,4 +27,4 @@ class Body extends Component {
     }
 }
  
-export default Body;
+export default Content;

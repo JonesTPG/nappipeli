@@ -74,7 +74,7 @@ io.on('connection', function(socket) {
             notifyPrizeWon(data);
         }
         //small prize.
-        else if (counter % 5 == 0) {
+        else if (counter % 100 == 0) {
             notifyProgressToNextPrize(100);
             let data = {
                 id: socket.id,

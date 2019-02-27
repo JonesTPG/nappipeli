@@ -9,7 +9,7 @@ class Header extends Component {
     render() { 
         return ( 
             <div className="header">
-                <p>Vincit ennakkotehtävä: nappipeliv2</p>
+                <p>NAPPIPELI</p>
 
                 <p>Pelaat nimimerkillä {this.props.username}</p>
             </div>

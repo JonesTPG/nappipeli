@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Header from './components/header';
-import Body from './components/body';
+import Content from './components/content';
 import Footer from './components/footer';
 import Welcome from './components/welcome';
 
@@ -35,7 +35,7 @@ class App extends Component {
         <Welcome socket={this.props.socket}
                  handleUsername={this.handleUsername}></Welcome>
         <Header username={this.state.username}></Header>
-        <Body socket={this.props.socket}></Body>
+        <Content socket={this.props.socket}></Content>
         <Footer socket={this.props.socket}></Footer>
       </>
     );

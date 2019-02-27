@@ -19,9 +19,15 @@ class Main extends Component {
     render() { 
         return (  
             <>
-                <NextPrize socket={this.props.socket}></NextPrize>
+                <div className="next-prize">
+                    <NextPrize socket={this.props.socket}></NextPrize>
+                </div>
+
                 <button className="button" onClick={this.handleButtonClick}>Paina tästä.</button>
-                <Info socket={this.props.socket}></Info>
+
+                <div className="info-text">
+                    <Info socket={this.props.socket}></Info>
+                </div>
             </>
         );
     }
