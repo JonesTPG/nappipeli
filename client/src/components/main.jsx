@@ -10,12 +10,18 @@ class Main extends Component {
         super(props);
         this.state = {  }
     }
+
+    handleButtonClick = () => {
+        let socket = this.props.socket;
+        socket.emit('push', 'true');
+    }
+    
     render() { 
         return (  
             <>
-                <NextPrize></NextPrize>
-                <button className="button">Paina tästä.</button>
-                <Info></Info>
+                <NextPrize socket={this.props.socket}></NextPrize>
+                <button className="button" onClick={this.handleButtonClick}>Paina tästä.</button>
+                <Info socket={this.props.socket}></Info>
             </>
         );
     }

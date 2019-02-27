@@ -16,7 +16,6 @@ class Players extends Component {
     this.getConnectedPlayers();
     let socket = this.props.socket;
     socket.on('playerUpdate', function(data) {
-        console.log(data);
         this.setState({
           players: data
         }); 

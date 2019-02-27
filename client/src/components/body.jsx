@@ -17,7 +17,7 @@ class Body extends Component {
                 <PreviousWinners></PreviousWinners>
             </div>
             <div className="column">
-                <Main></Main>
+                <Main socket={this.props.socket}></Main>
             </div>
             <div className="column">
                 <Players socket={this.props.socket}></Players>

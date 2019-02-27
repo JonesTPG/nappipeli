@@ -3,11 +3,24 @@ import React, { Component } from 'react';
 class Info extends Component {
     constructor(props) {
         super(props);
-        this.state = {  }
+        this.state = { 
+            infoText: 'Ei palkintoa.'
+         }
     }
+
+    componentDidMount() {
+        let socket = this.props.socket;
+        socket.on('prizeWon', function(data) {
+        console.log(data);
+        this.setState({
+          infoText: data.prize
+        }); 
+    }.bind(this));
+    }
+
     render() { 
         return ( 
-            <p>Voitit pienen palkinnon!</p>
+            <p>{this.state.infoText}</p>
          );
     }
 }
