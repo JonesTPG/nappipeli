@@ -5,8 +5,6 @@ import Content from './components/content';
 import Footer from './components/footer';
 import Welcome from './components/welcome';
 
-
-
 class App extends Component {
   constructor(props) {
     super(props);
@@ -16,10 +14,6 @@ class App extends Component {
     }
 
 }
-
-  componentDidMount() {
-   
-  }
 
   handleUsername = (username) => {
       this.setState({
