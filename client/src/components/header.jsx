@@ -8,11 +8,11 @@ class Header extends Component {
     }
     render() { 
         return ( 
-            <div className="header">
+            <header className="header">
                 <p>NAPPIPELI</p>
 
                 <p>Pelaat nimimerkillä {this.props.username}</p>
-            </div>
+            </header>
             
          );
     }

@@ -37,10 +37,13 @@ console.log(`Server listening on  ${port}`);
 io.on('connection', function(socket) {
 
     socket.on('new player', function(data) {
-        
+        // let date = new Date();
+        // let hour = (date.getHours()).toString();
+        // let minutes = ( date.getMinutes()<10?'0':'' + date.getMinutes() ).toString();
         players.push({
             username : data,
-            id: socket.id
+            id: socket.id,
+            connected: prettyTime(new Date()) 
         });
         notifyPlayersChanged(players);
         
@@ -56,7 +59,7 @@ io.on('connection', function(socket) {
                 id: socket.id,
                 username: getUsername(socket.id),
                 prize: "big",
-                date: new Date()
+                date: prettyTime(new Date())
             };
             previousWinners.push(data);
             notifyPrizeWon(data);
@@ -68,7 +71,7 @@ io.on('connection', function(socket) {
                 id: socket.id,
                 username: getUsername(socket.id),
                 prize: "medium",
-                date: new Date()
+                date: prettyTime(new Date())
             };
             previousWinners.push(data);
             notifyPrizeWon(data);
@@ -80,7 +83,7 @@ io.on('connection', function(socket) {
                 id: socket.id,
                 username: getUsername(socket.id),
                 prize: "small",
-                date: new Date()
+                date: prettyTime(new Date())
             };
             previousWinners.push(data);
             notifyPrizeWon(data);
@@ -136,5 +139,19 @@ function notifyWinnersChanged(previousWinners) {
 //utility function to get the username with a socket id.
 function getUsername(id) {
     let result = players.find( player => player.id === id );
+    if (result == undefined) {
+        return '';
+    }
     return result.username;
+}
+
+//make a useful presentation of current time
+function prettyTime(date) {
+    let hour = (date.getHours()).toString();
+    let minutes = date.getMinutes();
+    if (minutes < 10) {
+        minutes = '0'+minutes;
+    }
+    let string = hour + ':' + minutes;
+    return string;
 }

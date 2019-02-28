@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import '../css/footer.css'
+import '../css/footer.css';
+import {Button, Modal} from 'react-materialize';
 
 class Footer extends Component {
     constructor(props) {
@@ -21,9 +22,21 @@ class Footer extends Component {
 
     render() { 
         return ( 
-            <div className="footer">
-                <p>Joonas Ryynänen 2019. Pelaajia tällä hetkellä {this.state.playerCount} kpl.</p>
-            </div>
+            <footer className="footer">
+            <br></br>
+                <Modal
+                    header='Peliohjeet'
+                    trigger={<Button className="blue darken-3">Peliohjeet</Button>}>
+                    <p>Pelissä pelaat muiden yhdistettyjen pelaajien kanssa painamalla keskellä ruutua näkyvää nappia.
+                       Tavoitteena on voittaa jaossa olevia palkintoja, joita on kolme erilaista: pieni, keskisuuri ja iso palkinto.
+                       Pelin yläreunassa näet laskurin, joka kertoo paljonko matkaa seuraavaan palkintoon on. Huomaa, että kaikki muutkin pelaajat
+                       näkevät saman laskurin, joten sinun täytyy ajoittaa painalluksesi hyvin voittaaksesi. Onnea peliin!
+                    </p>
+                </Modal>
+                <br></br>
+                <p>Joonas Ryynänen 2019. Pelaajia tällä hetkellä {this.state.playerCount} kpl.</p> 
+            </footer>  
+  
          );
     }
 }

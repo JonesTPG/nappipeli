@@ -7,7 +7,6 @@ class Players extends Component {
     this.state = { players: [] };  
 }
 
-  
   // listen to player updates and set the state
   // accordingly.
   componentDidMount() {
@@ -29,33 +28,30 @@ class Players extends Component {
       .then(res => res.json())
       .then(players => this.setState({ players }));
   }
-
   render() {
     const { players } = this.state;
-
     return (
-      <div className="App">
-        {/* Render the passwords if we have them */}
+      <>
+        {/* Render the players if we have them */}
         {players.length ? (
           <div>
-            <h1>Yhdistetyt pelaajat:</h1>
-            <ul className="players">
+            <h4>Yhdistetyt pelaajat:</h4>
+            <ul className="collection">
               {players.map((player) =>
-                <li key={player.username}>
-                  {player.username}
-                </li>
+                    <li className="collection-item avatar" key={player.username}>
+                      <i class="material-icons circle blue">star</i>
+                      <span className="title">{player.username}</span>
+                      <p>Aloitti pelaamisen {player.connected} <br></br>
+                      </p> 
+                    </li>
               )}
             </ul>
-            
-          </div>
+         </div>
         ) : (
-          // Render a helpful message otherwise
-          <div>
-            <h1>Ei yhdistettyjä pelaajia</h1>
-            
-          </div>
+          // There are no connected players at the moment.
+        <h4>Ei yhdistettyjä pelaajia</h4> 
         )}
-      </div>
+      </>
     );
   }
 }

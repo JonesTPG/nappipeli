@@ -9,6 +9,7 @@ class PreviousWinners extends Component {
     componentDidMount() {
         let socket = this.props.socket;
         socket.on('previousWinners', function(data) {
+        
         this.setState({
           winners: data
         }); 
@@ -19,14 +20,17 @@ class PreviousWinners extends Component {
         let winners = this.state.winners; 
         return (
             <> 
-           
             {winners.length ? (
                 <div>
-                    <h1>Edelliset voittajat:</h1>
-                    <ul className="players">
+                    <h4>Edelliset voittajat:</h4>
+                    <ul className="collection">
                     {winners.map((winner) =>
-                        <li key={winner.date}> {/*date is a good key because it will be unique to every win event.*/}
-                        {winner.username} {winner.prize}
+                        <li className="collection-item avatar" key={winner.date}> {/*date is a good key because it will be unique to every win event.*/}
+                        <i class="material-icons circle blue">star</i>
+                        <span className="title">{winner.username}</span>
+                        <p> {winner.date} <br></br>
+                        </p>
+                         Voitti palkinnon {winner.prize}
                         </li>
                     )}
                     </ul>
@@ -35,7 +39,7 @@ class PreviousWinners extends Component {
                 ) : (
                 // There is no previous winners.
                 <div>
-                    <h1>Ei edellisiä voittajia.</h1>
+                    <h4>Ei edellisiä voittajia</h4>
                     
                 </div>
             )}

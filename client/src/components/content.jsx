@@ -3,6 +3,8 @@ import PreviousWinners from './previouswinners';
 import Main from './main';
 import Players from './players';
 
+import {Row, Col} from 'react-materialize';
+
 import '../css/content.css'
 
 class Content extends Component {
@@ -12,17 +14,19 @@ class Content extends Component {
     }
     render() { 
         return ( 
-        <div className="content">
-            <div className="column">
-                <PreviousWinners socket={this.props.socket}></PreviousWinners>
-            </div>
-            <div className="column">
-                <Main socket={this.props.socket}></Main>
-            </div>
-            <div className="column">
-                <Players socket={this.props.socket}></Players>
-            </div>   
-        </div>
+            <main>
+            <Row>
+                <Col s={0} l={4} className='center'>
+                    <PreviousWinners socket={this.props.socket}></PreviousWinners>
+                </Col>
+                <Col s={12} l={4} className='center'>
+                    <Main socket={this.props.socket}></Main>
+                </Col>
+                <Col s={0} l={4} className='center'>
+                    <Players socket={this.props.socket}></Players>
+                </Col>   
+            </Row>
+            </main>
          );
     }
 }

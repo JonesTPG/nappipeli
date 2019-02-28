@@ -27,6 +27,11 @@ class Welcome extends Component {
                 })
         }
 
+        else if (this.state.value.length < 2 || this.state.value.length > 10 ) {
+            this.setState({
+                infoText: 'Nimimerkin tulee olla 3-9 merkkiä pitkä.'
+            })
+        }
         else {
             var modal = document.getElementById('myModal');
             modal.style.display = "none";
@@ -42,16 +47,16 @@ class Welcome extends Component {
     render() { 
         return ( 
             <>
-                <div id="myModal" className="modal">
-                    <div className="modal-content">
+                <div id="myModal" className="pop-up">
+                    <div className="pop-up-content">
                     
                     <p>Tervetuloa pelaamaan nappipeliä! Kirjoita nimimerkkisi alla olevaan laatikkoon.</p>
                     <form onSubmit={this.handleSubmit}>
                         <label>
                         Nimimerkki:<br></br> 
-                        <input type="text" value={this.state.value} onChange={this.handleChange} />
-                        </label>
-                        <input type="submit" value="Lähetä" />
+                        <input className="text-input" type="text" value={this.state.value} onChange={this.handleChange} />
+                        </label><br></br>
+                        <input type="submit" value="Aloita pelaaminen" />
                     </form>
                     <p>{this.state.infoText}</p>
                     </div>
