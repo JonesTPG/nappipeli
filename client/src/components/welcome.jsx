@@ -10,9 +10,7 @@ class Welcome extends Component {
             infoText: ''
          } 
         this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-
-        
+        this.handleSubmit = this.handleSubmit.bind(this);        
     }
 
     //update state as the form field changes
@@ -29,7 +27,7 @@ class Welcome extends Component {
 
         else if (this.state.value.length < 2 || this.state.value.length > 10 ) {
             this.setState({
-                infoText: 'Nimimerkin tulee olla 3-9 merkkiä pitkä.'
+                infoText: 'Nimimerkin tulee olla 2-9 merkkiä pitkä.'
             })
         }
         else {
@@ -62,7 +60,6 @@ class Welcome extends Component {
                     </div>
                 </div>
             </>
-
          );
     }
 }

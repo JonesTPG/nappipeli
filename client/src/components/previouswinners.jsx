@@ -12,7 +12,6 @@ class PreviousWinners extends Component {
     componentDidMount() {
         let socket = this.props.socket;
         socket.on('previousWinners', function(data) {
-        console.log(data)
         this.setState({
           winners: data
         }); 
