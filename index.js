@@ -60,6 +60,7 @@ io.on('connection', function(socket) {
                 id: socket.id,
                 username: getUsername(socket.id),
                 prize: "big",
+                text: 'Voitti ison palkinnon!',
                 date: prettyTime(new Date()),
                 dateid: new Date()
                 
@@ -74,6 +75,7 @@ io.on('connection', function(socket) {
                 id: socket.id,
                 username: getUsername(socket.id),
                 prize: "medium",
+                text: 'Voitti keskisuuren palkinnon!',
                 date: prettyTime(new Date()),
                 dateid: new Date()
             };
@@ -81,12 +83,13 @@ io.on('connection', function(socket) {
             notifyPrizeWon(data);
         }
         //small prize.
-        else if (counter % 100 == 0) {
+        else if (counter % 10 == 0) {
             notifyProgressToNextPrize(100);
             let data = {
                 id: socket.id,
                 username: getUsername(socket.id),
                 prize: "small",
+                text: 'Voitti pienen palkinnon!',
                 date: prettyTime(new Date()),
                 dateid: new Date()
             };

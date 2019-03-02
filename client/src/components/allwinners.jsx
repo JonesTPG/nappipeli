@@ -21,7 +21,7 @@ class AllWinners extends Component {
                             <span className="title">{winner.username}</span>
                             <p> {winner.date} <br></br>
                             </p>
-                            Voitti palkinnon {winner.prize}
+                            {winner.text}
                         </li>
                     )}
                 </ul>
