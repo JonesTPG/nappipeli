@@ -16,7 +16,7 @@ class AllPlayers extends Component {
                 <ul className="collection">
                     {players.map((player) =>
                         <li className="collection-item avatar" key={player.username}>
-                        <i className="material-icons circle blue">star</i>
+                        <i className="material-icons circle red">account_circle</i>
                         <span className="title">{player.username}</span>
                         <p>Aloitti pelaamisen {player.connected} <br></br>
                         </p> 
