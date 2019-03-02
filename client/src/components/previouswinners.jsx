@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import AllWinners from './allwinners';
+
+
 
 class PreviousWinners extends Component {
     constructor(props) {
@@ -9,7 +12,7 @@ class PreviousWinners extends Component {
     componentDidMount() {
         let socket = this.props.socket;
         socket.on('previousWinners', function(data) {
-        
+        console.log(data)
         this.setState({
           winners: data
         }); 
@@ -17,24 +20,26 @@ class PreviousWinners extends Component {
     }
 
     render() {
-        let winners = this.state.winners; 
+        //show maximum of four in the list
+        let winners = this.state.winners.reverse().slice(0,4); 
         return (
-            <> 
+            <div> 
             {winners.length ? (
-                <div>
+                <div className="previous-winners">
                     <h4>Edelliset voittajat:</h4>
                     <ul className="collection">
                     {winners.map((winner) =>
-                        <li className="collection-item avatar" key={winner.date}> {/*date is a good key because it will be unique to every win event.*/}
-                        <i class="material-icons circle blue">star</i>
-                        <span className="title">{winner.username}</span>
-                        <p> {winner.date} <br></br>
-                        </p>
-                         Voitti palkinnon {winner.prize}
+                        <li className="collection-item avatar" key={winner.dateid}> {/*date is a good key because it will be unique to every win event.*/}
+                            <i className="material-icons circle blue">star</i>
+                            <span className="title">{winner.username}</span>
+                            <p> {winner.date} <br></br>
+                            </p>
+                            Voitti palkinnon {winner.prize}
                         </li>
                     )}
                     </ul>
-                    
+            
+                    <AllWinners winners={this.state.winners}></AllWinners>  
                 </div>
                 ) : (
                 // There is no previous winners.
@@ -43,7 +48,7 @@ class PreviousWinners extends Component {
                     
                 </div>
             )}
-            </>
+            </div>
          );
     }
 }

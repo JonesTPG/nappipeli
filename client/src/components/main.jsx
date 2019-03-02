@@ -18,7 +18,7 @@ class Main extends Component {
     
     render() { 
         return (  
-            <>
+            <div>
                 <div className="next-prize">
                     <NextPrize socket={this.props.socket}></NextPrize>
                 </div>
@@ -28,7 +28,7 @@ class Main extends Component {
                 <div className="info-text">
                     <Info socket={this.props.socket}></Info>
                 </div>
-            </>
+            </div>
         );
     }
 }

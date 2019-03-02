@@ -19,11 +19,10 @@ class NextPrize extends Component {
 
     render() { 
         return ( 
-            <>
-                <p>  Seuraavaan palkintoon matkaa: 
-                    {this.state.nextPrize}
-                </p>
-            </>
+            <div>
+                <h4>Seuraavaan palkintoon matkaa:</h4>
+                <h4>{this.state.nextPrize} klikkiä</h4>
+            </div>
          );
     }
 }

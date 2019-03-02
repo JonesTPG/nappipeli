@@ -27,7 +27,8 @@ class App extends Component {
       <>
        {/*passing a function as a prop so we can catch the username the user chooses at the welcome screen.*/}
         <Welcome socket={this.props.socket}
-                 handleUsername={this.handleUsername}></Welcome>
+                 handleUsername={this.handleUsername}>
+        </Welcome>
         <Header username={this.state.username}></Header>
         <Content socket={this.props.socket}></Content>
         <Footer socket={this.props.socket}></Footer>

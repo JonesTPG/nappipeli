@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import AllPlayers from './allplayers';
 
 
 class Players extends Component {
@@ -29,7 +30,7 @@ class Players extends Component {
       .then(players => this.setState({ players }));
   }
   render() {
-    const { players } = this.state;
+    const players = this.state.players.slice(0,4);
     return (
       <>
         {/* Render the players if we have them */}
@@ -39,13 +40,15 @@ class Players extends Component {
             <ul className="collection">
               {players.map((player) =>
                     <li className="collection-item avatar" key={player.username}>
-                      <i class="material-icons circle blue">star</i>
+                      <i className="material-icons circle blue">star</i>
                       <span className="title">{player.username}</span>
                       <p>Aloitti pelaamisen {player.connected} <br></br>
                       </p> 
                     </li>
               )}
             </ul>
+
+            <AllPlayers players={this.state.players}></AllPlayers>
          </div>
         ) : (
           // There are no connected players at the moment.

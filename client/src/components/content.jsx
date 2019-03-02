@@ -5,7 +5,7 @@ import Players from './players';
 
 import {Row, Col} from 'react-materialize';
 
-import '../css/content.css'
+
 
 class Content extends Component {
     constructor(props) {
@@ -14,19 +14,19 @@ class Content extends Component {
     }
     render() { 
         return ( 
-            <main>
-            <Row>
-                <Col s={0} l={4} className='center'>
-                    <PreviousWinners socket={this.props.socket}></PreviousWinners>
-                </Col>
-                <Col s={12} l={4} className='center'>
-                    <Main socket={this.props.socket}></Main>
-                </Col>
-                <Col s={0} l={4} className='center'>
-                    <Players socket={this.props.socket}></Players>
-                </Col>   
-            </Row>
-            </main>
+            <div className="main-content">
+                <Row>
+                    <Col s={0} l={4} className='center'>
+                        <PreviousWinners socket={this.props.socket}></PreviousWinners>
+                    </Col>
+                    <Col s={12} l={4} className='center'>
+                        <Main socket={this.props.socket}></Main>
+                    </Col>
+                    <Col s={0} l={4} className='center'>
+                        <Players socket={this.props.socket}></Players>
+                    </Col>   
+                </Row>
+            </div>
          );
     }
 }

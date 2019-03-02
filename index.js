@@ -43,7 +43,8 @@ io.on('connection', function(socket) {
         players.push({
             username : data,
             id: socket.id,
-            connected: prettyTime(new Date()) 
+            connected: prettyTime(new Date())
+            
         });
         notifyPlayersChanged(players);
         
@@ -53,37 +54,41 @@ io.on('connection', function(socket) {
         //update counter.
         counter++;
         //big prize.
-        if (counter % 50 == 0) {
+        if (counter % 500 == 0) {
             notifyProgressToNextPrize(100);
             let data = {
                 id: socket.id,
                 username: getUsername(socket.id),
                 prize: "big",
-                date: prettyTime(new Date())
+                date: prettyTime(new Date()),
+                dateid: new Date()
+                
             };
             previousWinners.push(data);
             notifyPrizeWon(data);
         }
         //medium prize.
-        else if (counter % 20 == 0) {
+        else if (counter % 200 == 0) {
             notifyProgressToNextPrize(100);
             let data = {
                 id: socket.id,
                 username: getUsername(socket.id),
                 prize: "medium",
-                date: prettyTime(new Date())
+                date: prettyTime(new Date()),
+                dateid: new Date()
             };
             previousWinners.push(data);
             notifyPrizeWon(data);
         }
         //small prize.
-        else if (counter % 10 == 0) {
+        else if (counter % 100 == 0) {
             notifyProgressToNextPrize(100);
             let data = {
                 id: socket.id,
                 username: getUsername(socket.id),
                 prize: "small",
-                date: prettyTime(new Date())
+                date: prettyTime(new Date()),
+                dateid: new Date()
             };
             previousWinners.push(data);
             notifyPrizeWon(data);
