@@ -1,0 +1,19 @@
+@media only screen and (max-width: 1000px) {
+    .previous-winners {
+        display: none;
+    }
+
+    .player-list {
+        display: none;
+    }
+  }
+
+
+  @media only screen and (min-width: 1000px) {
+        
+    .mobile-buttons {
+        display: none
+    }
+    
+  }
+

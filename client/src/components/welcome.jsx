@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Button } from 'react-materialize';
 
 import '../css/welcome.css'
 
@@ -54,7 +55,7 @@ class Welcome extends Component {
                         Nimimerkki:<br></br> 
                         <input className="text-input" type="text" value={this.state.value} onChange={this.handleChange} />
                         </label><br></br>
-                        <input type="submit" value="Aloita pelaaminen" />
+                        <Button className="blue darken-3" onClick={this.handleSubmit}>Aloita pelaaminen</Button>
                     </form>
                     <p>{this.state.infoText}</p>
                     </div>

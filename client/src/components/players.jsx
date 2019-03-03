@@ -35,7 +35,7 @@ class Players extends Component {
       <>
         {/* Render the players if we have them */}
         {players.length ? (
-          <div>
+          <div className = "player-list">
             <h4>Yhdistetyt pelaajat:</h4>
             <ul className="collection">
               {players.map((player) =>
@@ -52,7 +52,9 @@ class Players extends Component {
          </div>
         ) : (
           // There are no connected players at the moment.
-        <h4>Ei yhdistettyjä pelaajia</h4> 
+          <div className="player-list">
+              <h4>Ei yhdistettyjä pelaajia</h4>
+          </div> 
         )}
       </>
     );

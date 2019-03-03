@@ -42,7 +42,7 @@ class PreviousWinners extends Component {
                 </div>
                 ) : (
                 // There is no previous winners.
-                <div>
+                <div className="previous-winners">
                     <h4>Ei edellisiä voittajia</h4>
                     
                 </div>

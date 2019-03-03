@@ -14,18 +14,20 @@ class Content extends Component {
     }
     render() { 
         return ( 
-            <div className="main-content">
-                <Row>
-                    <Col s={0} l={4} className='center'>
-                        <PreviousWinners socket={this.props.socket}></PreviousWinners>
-                    </Col>
-                    <Col s={12} l={4} className='center'>
-                        <Main socket={this.props.socket}></Main>
-                    </Col>
-                    <Col s={0} l={4} className='center'>
-                        <Players socket={this.props.socket}></Players>
-                    </Col>   
-                </Row>
+            <div className="content-area">
+                <div className="main-content">
+                    <Row>
+                        <Col s={12} l={4} className='center'>
+                            <PreviousWinners socket={this.props.socket}></PreviousWinners>
+                        </Col>
+                        <Col s={12} l={4} className='center'>
+                            <Main socket={this.props.socket}></Main>
+                        </Col>
+                        <Col s={12} l={4} className='center'>
+                            <Players socket={this.props.socket}></Players>
+                        </Col>   
+                    </Row>
+                </div>
             </div>
          );
     }
