@@ -29,6 +29,7 @@ class Players extends Component {
       .then(res => res.json())
       .then(players => this.setState({ players }));
   }
+  
   render() {
     const players = this.state.players.slice(0,4);
     return (

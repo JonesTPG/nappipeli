@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { Button } from 'react-materialize';
 
 import '../css/main.css'
 import NextPrize from './nextprize';
 import Info from './info';
+import MobileButtons from './mobilebuttons';
 
 
 class Main extends Component {
@@ -18,6 +18,8 @@ class Main extends Component {
     }
     
     render() { 
+        
+
         return (  
             <div>
                 <div className="next-prize">
@@ -30,11 +32,8 @@ class Main extends Component {
                     <Info socket={this.props.socket}></Info>
                 </div>
 
-                <div className="mobile-buttons">
-                <br></br><br></br><br></br>
-                    <Button className="blue darken-3">Edelliset voittajat</Button> <br></br><br></br>
-                    <Button className="blue darken-3">Yhdistetyt pelaaajat</Button>
-                </div>
+                <MobileButtons socket={this.props.socket}></MobileButtons>
+               
             </div>
         );
     }
