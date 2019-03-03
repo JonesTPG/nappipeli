@@ -6,14 +6,23 @@
     .player-list {
         display: none;
     }
-  }
+}
 
 
-  @media only screen and (min-width: 1000px) {
+@media only screen and (min-width: 1000px) {
         
     .mobile-buttons {
         display: none
     }
+
     
-  }
+}
+
+@media only screen and (min-height: 700px) and (min-width: 1000px) {
+        
+    .footer {
+        position: fixed;
+    }
+    
+}
 
