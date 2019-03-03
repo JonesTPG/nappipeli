@@ -37,9 +37,6 @@ console.log(`Server listening on  ${port}`);
 io.on('connection', function(socket) {
 
     socket.on('new player', function(data) {
-        // let date = new Date();
-        // let hour = (date.getHours()).toString();
-        // let minutes = ( date.getMinutes()<10?'0':'' + date.getMinutes() ).toString();
         players.push({
             username : data,
             id: socket.id,
@@ -83,7 +80,7 @@ io.on('connection', function(socket) {
             notifyPrizeWon(data);
         }
         //small prize.
-        else if (counter % 10 == 0) {
+        else if (counter % 100 == 0) {
             notifyProgressToNextPrize(100);
             let data = {
                 id: socket.id,
